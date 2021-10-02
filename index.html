@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <style>
+        #map {
+            width: 999px;
+            height: 666px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="data/TradexBonamoussadiTradexBonamoussadikml_2.js"></script>
+        <script src="data/LimbeDoualaMovementLimbeDoualaMovementkml_3.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[4.084485397667904,9.73012460236959],[4.092199120077582,9.74170680303593]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_GoogleSatellite_0');
+        map.getPane('pane_GoogleSatellite_0').style.zIndex = 400;
+        var layer_GoogleSatellite_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleSatellite_0',
+            opacity: 1.0,
+            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_GoogleSatellite_0;
+        map.addLayer(layer_GoogleSatellite_0);
+        map.createPane('pane_GoogleLabels_1');
+        map.getPane('pane_GoogleLabels_1').style.zIndex = 401;
+        var layer_GoogleLabels_1 = L.tileLayer('https://mt1.google.com/vt/lyrs=h&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleLabels_1',
+            opacity: 1.0,
+            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_GoogleLabels_1;
+        map.addLayer(layer_GoogleLabels_1);
+        function pop_TradexBonamoussadiTradexBonamoussadikml_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['description'] !== null ? autolinker.link(feature.properties['description'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['timestamp'] !== null ? autolinker.link(feature.properties['timestamp'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['begin'] !== null ? autolinker.link(feature.properties['begin'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? autolinker.link(feature.properties['end'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['altitudeMode'] !== null ? autolinker.link(feature.properties['altitudeMode'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tessellate'] !== null ? autolinker.link(feature.properties['tessellate'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['extrude'] !== null ? autolinker.link(feature.properties['extrude'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['visibility'] !== null ? autolinker.link(feature.properties['visibility'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['drawOrder'] !== null ? autolinker.link(feature.properties['drawOrder'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['icon'] !== null ? autolinker.link(feature.properties['icon'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TradexBonamoussadiTradexBonamoussadikml_2_0() {
+            return {
+                pane: 'pane_TradexBonamoussadiTradexBonamoussadikml_2',
+                opacity: 1,
+                color: 'rgba(1,255,13,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_TradexBonamoussadiTradexBonamoussadikml_2');
+        map.getPane('pane_TradexBonamoussadiTradexBonamoussadikml_2').style.zIndex = 402;
+        map.getPane('pane_TradexBonamoussadiTradexBonamoussadikml_2').style['mix-blend-mode'] = 'normal';
+        var layer_TradexBonamoussadiTradexBonamoussadikml_2 = new L.geoJson(json_TradexBonamoussadiTradexBonamoussadikml_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_TradexBonamoussadiTradexBonamoussadikml_2',
+            layerName: 'layer_TradexBonamoussadiTradexBonamoussadikml_2',
+            pane: 'pane_TradexBonamoussadiTradexBonamoussadikml_2',
+            onEachFeature: pop_TradexBonamoussadiTradexBonamoussadikml_2,
+            style: style_TradexBonamoussadiTradexBonamoussadikml_2_0,
+        });
+        bounds_group.addLayer(layer_TradexBonamoussadiTradexBonamoussadikml_2);
+        map.addLayer(layer_TradexBonamoussadiTradexBonamoussadikml_2);
+        function pop_LimbeDoualaMovementLimbeDoualaMovementkml_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? autolinker.link(feature.properties['Name'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['description'] !== null ? autolinker.link(feature.properties['description'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['timestamp'] !== null ? autolinker.link(feature.properties['timestamp'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['begin'] !== null ? autolinker.link(feature.properties['begin'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? autolinker.link(feature.properties['end'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['altitudeMode'] !== null ? autolinker.link(feature.properties['altitudeMode'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tessellate'] !== null ? autolinker.link(feature.properties['tessellate'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['extrude'] !== null ? autolinker.link(feature.properties['extrude'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['visibility'] !== null ? autolinker.link(feature.properties['visibility'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['drawOrder'] !== null ? autolinker.link(feature.properties['drawOrder'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['icon'] !== null ? autolinker.link(feature.properties['icon'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_LimbeDoualaMovementLimbeDoualaMovementkml_3_0() {
+            return {
+                pane: 'pane_LimbeDoualaMovementLimbeDoualaMovementkml_3',
+                opacity: 1,
+                color: 'rgba(219,30,42,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 8.0,
+                fillOpacity: 0,
+                interactive: true,
+            }
+        }
+        map.createPane('pane_LimbeDoualaMovementLimbeDoualaMovementkml_3');
+        map.getPane('pane_LimbeDoualaMovementLimbeDoualaMovementkml_3').style.zIndex = 403;
+        map.getPane('pane_LimbeDoualaMovementLimbeDoualaMovementkml_3').style['mix-blend-mode'] = 'normal';
+        var layer_LimbeDoualaMovementLimbeDoualaMovementkml_3 = new L.geoJson(json_LimbeDoualaMovementLimbeDoualaMovementkml_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_LimbeDoualaMovementLimbeDoualaMovementkml_3',
+            layerName: 'layer_LimbeDoualaMovementLimbeDoualaMovementkml_3',
+            pane: 'pane_LimbeDoualaMovementLimbeDoualaMovementkml_3',
+            onEachFeature: pop_LimbeDoualaMovementLimbeDoualaMovementkml_3,
+            style: style_LimbeDoualaMovementLimbeDoualaMovementkml_3_0,
+        });
+        bounds_group.addLayer(layer_LimbeDoualaMovementLimbeDoualaMovementkml_3);
+        map.addLayer(layer_LimbeDoualaMovementLimbeDoualaMovementkml_3);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/LimbeDoualaMovementLimbeDoualaMovementkml_3.png" /> Limbe-Douala Movement Limbe-Douala Movement.kml': layer_LimbeDoualaMovementLimbeDoualaMovementkml_3,'<img src="legend/TradexBonamoussadiTradexBonamoussadikml_2.png" /> Tradex Bonamoussadi Tradex Bonamoussadi.kml': layer_TradexBonamoussadiTradexBonamoussadikml_2,"Google Labels": layer_GoogleLabels_1,"Google Satellite": layer_GoogleSatellite_0,}).addTo(map);
+        setBounds();
+        var i = 0;
+        layer_LimbeDoualaMovementLimbeDoualaMovementkml_3.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Name'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Name']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_LimbeDoualaMovementLimbeDoualaMovementkml_3'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_TradexBonamoussadiTradexBonamoussadikml_2,layer_LimbeDoualaMovementLimbeDoualaMovementkml_3]);
+        map.on("zoomend", function(){
+            resetLabels([layer_TradexBonamoussadiTradexBonamoussadikml_2,layer_LimbeDoualaMovementLimbeDoualaMovementkml_3]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_TradexBonamoussadiTradexBonamoussadikml_2,layer_LimbeDoualaMovementLimbeDoualaMovementkml_3]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_TradexBonamoussadiTradexBonamoussadikml_2,layer_LimbeDoualaMovementLimbeDoualaMovementkml_3]);
+        });
+        </script>
+    </body>
+</html>
